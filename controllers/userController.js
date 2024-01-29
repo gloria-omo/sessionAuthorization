@@ -97,7 +97,20 @@ exports.logOut = async (req,res)=>{
 
     catch(error){
         res.status(500).json({
-            error:`unable to log-out${error.message}`
+            error: `unable to log-out${error.message}`
+        })
+    }
+};
+
+exports.home = async (req,res)=>{
+    try{
+  res.status(200).json({
+    message: `welcome ${req.session.user.fullName.split(" ")[0]} to the home page `
+  })
+    }
+    catch(error){
+        res.status(500).json({
+            error: `${error.message}`
         })
     }
 }
