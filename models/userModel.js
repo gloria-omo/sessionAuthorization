@@ -1,19 +1,26 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-    fullName:{
-        type:String,
-        require:true
+    firstName:{
+        type:String
+    },
+    lastName:{
+        type:String
     },
     email:{
         type:String,
-        require:true,
         unique:true
     },
     password:{
-        type:String,
-        require:true
+        type:String
     },
+    isVerified:{
+        type:Boolean
+
+    },
+    profilePicture:{
+        type:String
+    }
 },{timestamps:true});
 
 const userModel = mongoose.model("user",userSchema);

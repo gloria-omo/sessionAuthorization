@@ -1,6 +1,6 @@
 const userModel = require("../models/userModel");
 const bcrypt = require("bcrypt");
-
+const passport =require("passport");
 exports.signUp = async(req,res)=>{
     try{
         const {fullName,email,password,confirmPassword} = req.body;
@@ -114,3 +114,10 @@ exports.home = async (req,res)=>{
         })
     }
 }
+
+exports.socalAuth = passport.authenticate("google",{scope:["email","profile"]})
+
+exports.callBack = passport.authenticate("google",{
+    successRedirect:"auth/google/success",
+    failureRedirect:"auth/google/failure"
+})
